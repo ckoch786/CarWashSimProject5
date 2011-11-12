@@ -4,7 +4,7 @@
 // on the size of the queue. A queue is a "First in, first out" structure.
 
 
-package carwashsim;
+package carwashsim.queue;
 
 public interface UnboundedQueueInterface<T> extends QueueInterface<T> {
 	void enqueue(T element);

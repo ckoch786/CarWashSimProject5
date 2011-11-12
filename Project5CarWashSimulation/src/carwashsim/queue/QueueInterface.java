@@ -3,7 +3,7 @@
 //Interface for a class that implements a queue of T.
 //A queue is a "First in, first out" structure
 
-package carwashsim;
+package carwashsim.queue;
 
 public interface QueueInterface<T> {
 	

@@ -1,7 +1,8 @@
 //QueueUnderFlow.java			modified by Cory Koch			Project5
 //
+//Just an Exception class
 
-package carwashsim;
+package carwashsim.queue;
 
 public class QueueUnderFlowException extends Exception {
 	QueueUnderFlowException(){
