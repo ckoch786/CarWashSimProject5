@@ -1,6 +1,7 @@
 //QueueInterface.java                 modified by Cory Koch 					Project 5
 //
-//
+//Interface for a class that implements a queue of T.
+//A queue is a "First in, first out" structure
 
 package carwashsim;
 
@@ -12,6 +13,5 @@ public interface QueueInterface<T> {
 	
 	boolean isEmpty();
 	//Returns true is this queue is empty; otherwise, returns false
-	
 	
 }
