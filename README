@@ -1,0 +1,4 @@
+A simulation of a car wash facility as follows.  Assume customers arrive at the car wash in random integer intervals of 1 to 8 minutes, and customers are served in random integer intervals of 2 to 5 minutes. (That is, when a customer arrives, the next customer will arrive in the next 1 to 8 minutes, and when a car is actually washed, it will take anywhere from 2 to 5 minutes to finish depending on the level of wash that was selected.)
+
+Simulates a service line at a car wash for a shift of 8 hours (480 minutes). 
+The service line is to be implemented as a queue that will contain the customer’s arrival time (in minutes from the start of the 8 hour period). 
