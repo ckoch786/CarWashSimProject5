@@ -1,19 +1,21 @@
-//---------------------------------------------------------------------------
-// ArrayUnbndQueue.java        Modified by Cory Koch                  Project5
-//
-// Implements UnboundedQueueInterface with an array to hold queue elements.
-//
-// Two constructors are provided; one that creates a queue of a default
-// original capacity and one that allows the calling program to specify the 
-// original capacity.
-//
-// If an enqueue is attempted when there is no room available in the array, a
-// new array is created, with capacity incremented by the original capacity.
-//---------------------------------------------------------------------------
-
-
 package carwashsim.queue;
-
+/**
+ *ArrayUnbndQueue.java 	&nbsp;&nbsp;&nbsp; Project5
+ *<p>
+ *Implements UnboundedQueueInterface with an array to hold queue elements.
+ *</p> 
+ *<p>
+ *Two constructors are provided; one that creates a queue of a default
+ *original capacity and one that allows the calling program to specify the
+ *original capacity.
+ *</p>
+ *<p>
+ *If an enqueue is attempted when there is no room available in the array, a
+ *new array is created, with capacity incremented by the original capacity.
+ *</p>
+ * @author Modified by Cory Koch
+ * @param <T>
+ */
 public class ArrayUnbndQueue<T> implements UnboundedQueueInterface<T>{
             	
    protected final int DEFCAP = 100; // default capacity

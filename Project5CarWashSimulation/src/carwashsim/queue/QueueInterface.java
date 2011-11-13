@@ -1,17 +1,27 @@
-//QueueInterface.java                 modified by Cory Koch 					Project 5
-//
-//Interface for a class that implements a queue of T.
-//A queue is a "First in, first out" structure
-
 package carwashsim.queue;
-
+/**
+ *QueueInterface.java  	&nbsp;&nbsp;&nbsp; Project5
+ *<p>
+ *Interface for a class that implements a queue of T.
+ *A queue is a "First in, first out" structure
+ *</p> 
+ * @author Modified by Cory Koch
+ *
+ * @param <T>
+ */
 public interface QueueInterface<T> {
 	
+	/**
+	 * 
+	 * @return
+	 * @throws QueueUnderFlowException if queue is empty
+	 * otherwise, removes front element from this queue and returns it.
+	 */
 	T dequeue() throws QueueUnderFlowException;
-	//Throws QueueUnderflowException if queue is empty
-	//otherwise, removes front element from this queue and returns it.
-	
+	/**
+	 * 
+	 * @return true if this queue is empty; otherwise, returns false
+	 */
 	boolean isEmpty();
-	//Returns true is this queue is empty; otherwise, returns false
-	
+
 }
