@@ -30,7 +30,7 @@ public int generateCustomerServiceTime(){
 public int calculateShiftTime(){
 	int shiftTimeInMin;
 	
-	shiftTimeInMin = getNumberOfHours() / 60 + getNumberOfMinutes();
+	shiftTimeInMin = getNumberOfHours() * 60 + getNumberOfMinutes();
 	
 	return shiftTimeInMin;
 }

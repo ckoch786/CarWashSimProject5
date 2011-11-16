@@ -1,11 +1,19 @@
 package carwashsim;
-
 import java.util.Scanner;
-
 import carwashsim.queue.ArrayUnbndQueue;
 import carwashsim.queue.QueueUnderFlowException;
 
+
 public class CarWashSimConsole {
+	public static boolean carWashIsFree() {
+		
+		if() return true;
+		
+		else
+			return false;
+	}
+	
+	
 	public static void main (String[] args) throws QueueUnderFlowException{
 		ArrayUnbndQueue<Integer> serviceLine = new ArrayUnbndQueue<Integer>();
 		CarWash shift = new CarWash();
@@ -15,6 +23,7 @@ public class CarWashSimConsole {
 		int customerCount; 
 		int arrivalTime;
 		int serviceTime;
+		int lengthOfShiftInMin;
 		
 	
 		
@@ -30,6 +39,7 @@ public class CarWashSimConsole {
 		numberOfMinutes = stdin.nextInt();
 		shift.setNumberOfMinutes(numberOfMinutes);
 		
+		lengthOfShiftInMin = shift.calculateShiftTime();
 		
 		/**
 		 *  Initialize any required counters.
@@ -62,29 +72,35 @@ public class CarWashSimConsole {
 			car wash is free)
 				print a message that a customer has started service
 				dequeue the customer's arrival time
-				calculate the customer's wait time
+				Function():
+					calculate the customer's wait time
 				determine this customer's service time( 2 to 5 min) and
-				calculate the next time the wash will be free and
-				thus a new customer can begin service
-		
+				Function():
+					calculate the next time the wash will be free and
+					thus a new customer can begin service
+			
 		 */
+		//TODO remove
+		System.out.println("Hours: "+shift.getNumberOfHours());
+		System.out.println("Minutes: "+shift.getNumberOfMinutes());
+		System.out.println("Shift time in Min: "+ lengthOfShiftInMin);
 		
-		for(int i = 1; i < shift.calculateShiftTime(); i++ ) {
+		for(int i = 1; i < lengthOfShiftInMin; i++ ) {
+			
+			System.out.println("The shift has begun!");//TODO remove
 			if(i == arrivalTime) {
 				System.out.print("A customers has arrived.");
 				customerCount++;
 				shift.setCustomerCount(customerCount);
 				serviceLine.enqueue(arrivalTime);
 				arrivalTime = shift.generateCustomerArrivalTime();
-			}else {
+			}else if(carWashIsFree()){
 				System.out.print("Customer has started service.");
 				if(serviceLine.isEmpty()) throw new QueueUnderFlowException("There are no customers.");
 				else 					  serviceLine.dequeue();
 				//TODO Calculate the customer's wait time?
 				serviceTime = shift.generateCustomerServiceTime();
-				
-				
-				
+				//TODO calculate the next time the wash will be free 
 				
 			}
 			
@@ -98,6 +114,11 @@ public class CarWashSimConsole {
 		 * Average wait time
 		 * Maximum number in line at one time
 		 */
+		
+		System.out.println("Number of customers served: " + customerCount);
+		System.out.println("Number of customers still waiting: ");//TODO
+		System.out.println("Average wait time: ");//TODO
+		System.out.println("Maximum number in line at one time: ");
 		
 	}
 
