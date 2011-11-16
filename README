@@ -2,3 +2,10 @@ A simulation of a car wash facility as follows.  Assume customers arrive at the 
 
 Simulates a service line at a car wash for a shift of 8 hours (480 minutes). 
 The service line is to be implemented as a queue that will contain the customer’s arrival time (in minutes from the start of the 8 hour period). 
+
+At the completion of the shift, report the following information:
+  a. Total number of customers served
+  b. Number of customers still waiting
+  c. Average wait time
+  d. Longest wait time
+  e. Maximum number in line at one time
