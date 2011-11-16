@@ -7,14 +7,14 @@ package carwashsim.queue;
  * @author Modified by Cory Koch
  */
 public class QueueUnderFlowException extends Exception {
-	QueueUnderFlowException(){
+	public QueueUnderFlowException(){
 		super();
 	}
 	/**
 	 * 
 	 * @param message Takes a custom message
 	 */
-	QueueUnderFlowException(String message){
+	public QueueUnderFlowException(String message){
 		super(message);
 	}
 

@@ -10,8 +10,7 @@ public class CarWash {
    private int maxWaitTime;
    Random rand = new Random(); 
    
-   public CarWash(){
-	
+   public CarWash( ){
 	   
    }
 
@@ -27,6 +26,13 @@ public int generateCustomerServiceTime(){
 	 
 	serviceTime = rand.nextInt(3) + 2;
 	return serviceTime;
+}
+public int calculateShiftTime(){
+	int shiftTimeInMin;
+	
+	shiftTimeInMin = getNumberOfHours() / 60 + getNumberOfMinutes();
+	
+	return shiftTimeInMin;
 }
 
 public void setNumberOfHours(int numberOfHours)     { this.numberOfHours = numberOfHours; }
