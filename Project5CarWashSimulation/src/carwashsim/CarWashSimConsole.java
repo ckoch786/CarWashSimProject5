@@ -45,6 +45,8 @@ public class CarWashSimConsole {
 		 *  Initialize any required counters.
 		 */
 		customerCount = 0;
+		serviceTime   = 0;
+		arrivalTime   = 0;
 		
 	
 		/**
@@ -93,13 +95,13 @@ public class CarWashSimConsole {
 				customerCount++;
 				shift.setCustomerCount(customerCount);
 				serviceLine.enqueue(arrivalTime);
-				arrivalTime = shift.generateCustomerArrivalTime();
+				arrivalTime = shift.generateCustomerArrivalTime() + arrivalTime;
 			}else if(carWashIsFree()){
 				System.out.print("Customer has started service.");
 				if(serviceLine.isEmpty()) throw new QueueUnderFlowException("There are no customers.");
 				else 					  serviceLine.dequeue();
 				//TODO Calculate the customer's wait time?
-				serviceTime = shift.generateCustomerServiceTime();
+				serviceTime = shift.generateCustomerServiceTime() + arrivalTime;
 				//TODO calculate the next time the wash will be free 
 				
 			}
