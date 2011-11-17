@@ -13,7 +13,7 @@ public interface QueueInterface<T> {
 	
 	/**
 	 * 
-	 * @return
+	 * @return Removes front element from this queue and returns it.
 	 * @throws QueueUnderFlowException if queue is empty
 	 * otherwise, removes front element from this queue and returns it.
 	 */
