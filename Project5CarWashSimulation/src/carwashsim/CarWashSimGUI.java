@@ -9,6 +9,15 @@ import carwashsim.queue.QueueUnderFlowException;
 
 import java.io.*;
 import java.util.Scanner;
+
+/**
+ * CarWashSimGUI.java  &nbsp;&nbsp;&nbsp; Project5
+ * <p>
+ * A Simulation of the car wash
+ * </p>
+ * @author Cory Koch
+ *
+ */
 public class CarWashSimGUI {
 	
 		
@@ -16,7 +25,7 @@ public class CarWashSimGUI {
 	   private static JTextField    hours;  
 	   private static JTextField 	minutes;
 	   private static JTextArea     statusTextArea; 
-	   private static JScrollPane   scrollBar;
+	   private static JScrollPane   sbrText;
 
 	   private static class ActionHandler implements ActionListener  {
 	      public void actionPerformed(ActionEvent event) {
@@ -32,6 +41,7 @@ public class CarWashSimGUI {
 		    		int lengthOfShiftInMin;
 		    		int carWashAvailable;
 		    		int waitTime;
+		    		int numberOfCustomersStillWaiting;
 		    		
 		    		String SnumberOfHours;
 		    		String SnumberOfMinutes;
@@ -43,7 +53,7 @@ public class CarWashSimGUI {
 		    		int irritatedCustomer;
 		    		waitTotal = 0;
 		    		irritatedCustomer = 0;
-		      
+		    		numberOfCustomersStillWaiting = 0;
 		    		/**
 		    		 * Read in the number of hours and number of minutes for
 		    		 * the car wash shift.
@@ -118,13 +128,13 @@ public class CarWashSimGUI {
 		    			if(i == arrivalTime) {
 		    				
 		    				
-		    				System.out.println("A customer[" +i +"] has arrived");
+		    				statusTextArea.append("A customer has arrived\n");
 		    				customerCount++;
 		    				shift.setCustomerCount(customerCount);
 		    				serviceLine.enqueue(arrivalTime);
 		    				arrivalTime = shift.generateCustomerArrivalTime() + arrivalTime;
 		    			}else if(arrivalTime > serviceTime || waitTime > serviceTime){
-		    				System.out.println("Customer has started service.");
+		    				statusTextArea.append("Customer has started service.\n");
 		    				if(serviceLine.isEmpty())
 								try {
 									throw new QueueUnderFlowException("Dequeue attempted on an empty queue, there are no customers.");
@@ -156,8 +166,18 @@ public class CarWashSimGUI {
 		    		 * Average wait time
 		    		 * Maximum number in line at one time
 		    		 */
+		    		for(int i = 0; i < customerCount; i++){
+		    			try {
+							serviceLine.dequeue();
+							numberOfCustomersStillWaiting++;
+						} catch (QueueUnderFlowException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		    		}
+		    		statusTextArea.append("\n\n");
 		    		statusTextArea.append("Number of customers served: " + customerCount + "\n");
-		    		statusTextArea.append("Number of customers still waiting: " + "\n"); //TODO
+		    		statusTextArea.append("Number of customers still waiting: " +numberOfCustomersStillWaiting+ "\n"); //TODO
 		    		statusTextArea.append("Average wait time: " + calculateAverageWaitTime(waitTotal, irritatedCustomer)+ "\n");//TODO
 		    		statusTextArea.append("Maximum number in line at one time: " + "\n"); //TODO
 		    		
@@ -183,9 +203,9 @@ public class CarWashSimGUI {
 	   hours          = new JTextField("hours: ", 5);
 	   minutes        = new JTextField("minutes: ", 5); 
 	   statusTextArea = new JTextArea("status", 20,60); 
-	   scrollBar      = new JScrollPane();
 	   statusTextArea.setBorder(new LineBorder(Color.red,3));
-
+	   sbrText        = new JScrollPane(statusTextArea);
+	   
 	   JButton       evaluate = new JButton("Simulate");         
 	   JButton       clear    = new JButton("Clear");	       
 	   ActionHandler action   = new ActionHandler();
@@ -201,8 +221,9 @@ public class CarWashSimGUI {
 	   input.setLayout(new FlowLayout());
 	   input.add(hours);
 	   input.add(minutes);
-	   activity.add(statusTextArea);
-
+	   //activity.add(statusTextArea);
+	   activity.add(sbrText);
+	   
 	   buttonPanel.setLayout(new FlowLayout());
 	   buttonPanel.add(evaluate);
 	   buttonPanel.add(clear);
@@ -228,7 +249,7 @@ public class CarWashSimGUI {
  		averageWaitTime = waitTotal / irritatedCustomer;
  		
  		return averageWaitTime;
- 	}
- 	}
+ 	}	
+ }
 	
 
